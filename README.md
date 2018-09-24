@@ -1,0 +1,2 @@
+# pyLucene
+Exploring PyLucene
