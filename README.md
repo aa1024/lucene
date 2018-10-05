@@ -1,2 +1,2 @@
-# pyLucene
-Exploring PyLucene
+# lucene
+lucene
