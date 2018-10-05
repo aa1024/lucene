@@ -1,4 +1,4 @@
-dataIndex:()
+dataIndex:([iKey:enlist `] iVal:enlist () ; iTab:enlist () )
 metaIndex:([iKey:enlist `] iVal:enlist () ; iTab:enlist () )
 
 /k:`abc;v:1;t:`data
