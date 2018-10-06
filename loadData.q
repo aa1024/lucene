@@ -1,8 +1,11 @@
-data:("************************************";enlist "\t") 0:`:data/sub.txt
-data2:("************************************";enlist "\t") 0:`:data/sub.txt
+dataSub:("************************************";enlist "\t") 0:`:data/sub.txt
+dataTag:("*********";enlist "\t") 0:`:data/tag.txt
 
 
-update search_index:i from `data
-{show x } each 5#data
+update search_index:i from `dataSub
+update search_index:i from `dataTag
+
+5#dataSub
+5#dataTag
 
 
