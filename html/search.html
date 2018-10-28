@@ -27,7 +27,27 @@
                 console.log("INFO : WebSocket connection dropped");
                 connWS.close();
             }
-          
+            connWS.onmessage = function(obj) {
+                var res = JSON.parse(obj.data);
+                        console.log(res);
+					txt="";
+
+                if (null !== res) {
+                   
+				        txt += "<table class='sui-table' > <thead><tr><th>Key</th><th>Index</th><th>Table</th> </tr></thead>";
+				        for (x in res) {
+				        	txt += "<tr>";
+				            txt += "<td>" + res[x].iKey + "</td>";
+							txt += "<td>" + res[x].iVal + "</td>";
+							txt += "<td>" + res[x].iTab + "</td>";
+							txt += "</tr>";
+				        }
+				        txt += "</table>"        
+				        document.getElementById("demo").innerHTML = txt;
+
+
+                }
+            }
             connWS.onerror = function(obj) { console.log(obj.data); }
         } else alert("WebSockets not supported in this Browser");
     }
