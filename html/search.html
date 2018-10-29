@@ -34,7 +34,7 @@
 
                 if (null !== res) {
                    
-				        txt += "<table class='sui-table' > <thead><tr><th>Key</th><th>Index</th><th>Table</th> </tr></thead>";
+				        txt += "<table class='res-table' > <thead><tr><th>Key</th><th>Index</th><th>Table</th> </tr></thead>";
 				        for (x in res) {
 				        	txt += "<tr>";
 				            txt += "<td>" + res[x].iKey + "</td>";
@@ -64,7 +64,7 @@
   <button id="go" onclick="search();">Go</button>
 
 </p>
-<table class="sui-table" id="demo">
+<table class="res-table" id="demo">
 <thead><tr><th>Key</th><th>Index</th><th>Table</th> </tr></thead>
   <tbody>
     <tr>
@@ -90,14 +90,14 @@ p.sansserif {
   font: normal 14px "Trebuchet MS", consolas, sans-serif;
 }
 
-.sui-table {
+.res-table {
   border: solid 1px #DDEEEE;
   border-collapse: collapse;
   border-spacing: 0;
   font: normal 12px "Trebuchet MS", Helvetica, sans-serif;
 }
 
-.sui-table thead th {
+.res-table thead th {
   background-color: #DDEFEF;
   border: solid 1px #DDEEEE;
   color: #336B6B;
@@ -106,7 +106,7 @@ p.sansserif {
   text-shadow: 1px 1px 1px #fff;
 }
 
-.sui-table tbody td {
+.res-table tbody td {
   border: solid 1px #DDEEEE;
   color: #333;
   padding: 10px;
