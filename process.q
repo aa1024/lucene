@@ -5,6 +5,8 @@
 
 .log.info:{show x};
 
-getr:{[msg]  0!getKeywords[msg]};
+getr:{[msg] ( 0!getKeywords[msg] ;  0!getKeywords2[msg]) };
 getr2:{[msg] show neg[.z.w].j.j  0!getKeywords["bob"]};
+
+
 
