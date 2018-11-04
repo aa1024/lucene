@@ -11,7 +11,15 @@ addData:{[k;v;t] `dataIndex upsert (k;v,dataIndex[k;`iVal];t,dataIndex[k;`iTab])
 {[d;t]  si:d`search_index;d:`search_index _ d;addData'[`$value d;#[count d;si];#[count d;t]] }[;`dataSub] each  update search_index:i from   dataSub;
 
 
-getKeywords:{[kw] select from dataIndex where lower[iKey] like ("*",kw,"*") };
+getKeywords:{[kw] 5?0!select from dataIndex where lower[iKey] like ("*",kw,"*") };
+getKeywords2:{[kw] select from metaIndex where lower[iKey] like ("*",kw,"*") };
 
-getKeywords["london"]
 
+f:first 0!getKeywords["name"]
+f
+(value first f`iTab)f`iVal
+
+getKeywords:{[kw] 5?0!select from dataIndex where lower[iKey] like ("*",kw,"*") };
+
+
+getr["name"]
