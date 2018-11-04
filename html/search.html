@@ -17,6 +17,21 @@
 
   }
 
+	function processTable(res){
+		var txt="";
+        if (null !== res) {
+		        txt += "<br><table class='res-table' > <thead><tr><th>Key</th><th>Index</th><th>Table</th> </tr></thead>";
+		        for (x in res) {
+		        	txt += "<tr>";
+		            txt += "<td>" + res[x].iKey + "</td>";
+					txt += "<td>" + res[x].iVal + "</td>";
+					txt += "<td>" + res[x].iTab + "</td>";
+					txt += "</tr>";
+		        }
+		        txt += "</table>"  ;      
+        }
+        return txt;
+	}
 
     function connect() {
         if ("WebSocket" in window) {
@@ -29,24 +44,13 @@
             }
             connWS.onmessage = function(obj) {
                 var res = JSON.parse(obj.data);
-                        console.log(res);
-					txt="";
+                var tabTxt="";	
+					tabTxt += processTable(res[0]);
+					tabTxt += processTable(res[1]);
 
-                if (null !== res) {
-                   
-				        txt += "<table class='res-table' > <thead><tr><th>Key</th><th>Index</th><th>Table</th> </tr></thead>";
-				        for (x in res) {
-				        	txt += "<tr>";
-				            txt += "<td>" + res[x].iKey + "</td>";
-							txt += "<td>" + res[x].iVal + "</td>";
-							txt += "<td>" + res[x].iTab + "</td>";
-							txt += "</tr>";
-				        }
-				        txt += "</table>"        
-				        document.getElementById("demo").innerHTML = txt;
+					document.getElementById("demo").innerHTML = tabTxt;
 
-
-                }
+                
             }
             connWS.onerror = function(obj) { console.log(obj.data); }
         } else alert("WebSockets not supported in this Browser");
@@ -64,19 +68,9 @@
   <button id="go" onclick="search();">Go</button>
 
 </p>
-<table class="res-table" id="demo">
-<thead><tr><th>Key</th><th>Index</th><th>Table</th> </tr></thead>
-  <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+<p id="demo">
 
-    </tr>
-
-  </tbody>
-</table>
-
+</p>
 
 </body>
 
