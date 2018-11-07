@@ -4,11 +4,8 @@
 <body onload="connect();">
 
 	<script>
-
 		    var connWS;
 		    var obj, dbParam, xmlhttp, myObj, x, txt = "";
-
-
 
   function search() {
     var s = document.getElementById("inputId");
@@ -45,28 +42,19 @@
             connWS.onmessage = function(obj) {
                 var res = JSON.parse(obj.data);
                 var tabTxt="";	
-					tabTxt += processTable(res[0]);
-					tabTxt += processTable(res[1]);
-
-					document.getElementById("demo").innerHTML = tabTxt;
-
-                
+				res.forEach ( function(r){ tabTxt += processTable(r)});
+				document.getElementById("demo").innerHTML = tabTxt;
             }
             connWS.onerror = function(obj) { console.log(obj.data); }
         } else alert("WebSockets not supported in this Browser");
     }
 
 
-
-
-
 </script>
-
 <p class="sansserif"> Search:
   <br>
   <input type="text" name="searchbox" id="inputId"><br>
   <button id="go" onclick="search();">Go</button>
-
 </p>
 <p id="demo">
 
