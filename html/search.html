@@ -42,6 +42,7 @@
             connWS.onmessage = function(obj) {
                 var res = JSON.parse(obj.data);
                 var tabTxt="";	
+                console.log(res);
 				res.forEach ( function(r){ tabTxt += processTable(r)});
 				document.getElementById("demo").innerHTML = tabTxt;
             }
