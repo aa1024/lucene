@@ -22,4 +22,4 @@ getr2:{[msg] show neg[.z.w].j.j  0!getKeywords["bob"]};
 getData:{ raze {[f] (value first f`iTab)f`iVal} each 0!x}
 
 getKeywords[msg:"name"]
-getr["name"]
+search["name"]
