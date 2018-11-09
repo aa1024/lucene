@@ -17,7 +17,7 @@ getKeywords2:{[kw] select from metaIndex where lower[iKey] like ("*",kw,"*") };
 getr:{[msg] m:0!getKeywords[msg]; ( m ;  0!getKeywords2[msg]; getData m) };
 getr2:{[msg] show neg[.z.w].j.j  0!getKeywords["bob"]};
 
-f:first 0!getKeywords["name"]
+/f:first 0!getKeywords["name"]
 
 getData:{ raze {[f] (value first f`iTab)f`iVal} each 0!x}
 
