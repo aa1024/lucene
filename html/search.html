@@ -48,7 +48,12 @@
 						txt += '</tr></thead>';
 					}
 					txt += '</table>';
-				} 
+				} else {  
+				txt = "";
+				for (var x in res) {
+					txt += x + " | " + res[x] + "<br />";
+				}
+			}
 		} ;
 		return txt + "<br />";
 	}
