@@ -15,7 +15,7 @@ retCount:5;
 getKeywords:{[kw] retCount?0!select from dataIndex where lower[iKey] like ("*",kw,"*") };
 getKeywords2:{[kw] select from metaIndex where lower[iKey] like ("*",kw,"*") };
 
-search:{[msg] m:0!getKeywords[msg]; ( m ;  0!getKeywords2[msg]; getData m) };
+search:{[msg] m:0!getKeywords[msg]; ( m ; `column_name`index`table_name xcol ungroup  0!getKeywords2[msg]; getData m) };
 getr2:{[msg] show neg[.z.w].j.j  0!getKeywords["bob"]};
 
 /f:first 0!getKeywords["name"]
@@ -23,4 +23,6 @@ getr2:{[msg] show neg[.z.w].j.j  0!getKeywords["bob"]};
 getData:{ raze {[f] (value first f`iTab)f`iVal} each 0!x}
 
 getKeywords[msg:"name"]
-search["name"]
+search["search"]
+searchMeta:getKeywords2
+`column_name`index`table_name xcol ungroup searchMeta["search"]
