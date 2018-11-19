@@ -17,15 +17,19 @@ getKeywords:{[kw] sublist[retCount;0!select from dataIndex where lower[iKey] lik
 getKeywords2:{[kw] select from metaIndex where lower[iKey] like ("*",kw,"*") };
 
 search:{[msg] m:0!getKeywords[msg]; ( m ; `column_name`index`table_name xcol ungroup  0!getKeywords2[msg]) , getData d:retCount sublist m };
+search2:{[msg] m:0!getKeywords[msg]; ( (`indexes;m) ; (`meta;`column_name`index`table_name xcol ungroup  0!getKeywords2[msg])) , getData d:retCount sublist m };
+
 getr2:{[msg] show neg[.z.w].j.j  0!getKeywords["bob"]};
 
 /f:first 0!getKeywords["name"]
 
-getData:{[d] {[f] (value f`iTab)f`iVal} each  0!`iTab xgroup ungroup 0!d }
+getData:{[d] {[f] (f`iTab;(value f`iTab)f`iVal)} each  0!`iTab xgroup ungroup 0!d }
 
 
 
 getKeywords[msg:"name"]
 search[msg:"name"]
+search2[msg:"name"]
+
 searchMeta:getKeywords2
 `column_name`index`table_name xcol ungroup searchMeta["search"]
