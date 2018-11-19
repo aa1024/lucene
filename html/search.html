@@ -14,6 +14,13 @@
 
   }
 
+   function search2() {
+    var s = document.getElementById("inputId");
+    //alert(s.value);
+	connWS.send('search2 "'+s.value+'"');
+
+  }
+
 	function processTable(res){
 		var txt="";
         if (null !== res) {
@@ -30,8 +37,7 @@
         return txt;
 	}
 
-    //parsing logic taken from kx websocket paper
-	function processTable2(res){
+function processTable2(res){
 		var txt="";
 		if (typeof res== "object") { 
 			if (res.length) {  
@@ -48,6 +54,41 @@
 						txt += '</tr>';
 					}
 					txt += '</table>';
+				} else {  
+				txt = "";
+				for (var x in res) {
+					txt += x + " | " + res[x] + "<br />";
+				}
+			}
+		} else {
+			txt = d;
+		};
+		return txt + "<br />";
+	}
+
+    //parsing logic taken from kx websocket paper
+	function processTable22(res1){
+		var txt="";
+		if (typeof res1== "object") { 
+			if (res1.length) {  
+				console.log(res1);
+				var res=res1[1];
+  				txt = '<br><button class="collapsible">'+ res1[0]+'</button>';
+
+
+				txt += "<div class='content'><table class='res-table' > <thead><tr>"
+					for (var h in res[0]) {
+						txt += '<th>' + h + '</th>';
+					}
+					txt += '</tr></thead>';
+					for (var i = 0; i < res.length; i++) {
+						txt += '<tr>';
+						for (var x in res[0]) {	
+							txt += '<td>' + res[i][x] + '</td>';
+						}
+						txt += '</tr>';
+					}
+					txt += '</table></div>';
 				} else {  
 				txt = "";
 				for (var x in res) {
@@ -91,6 +132,8 @@
   <br>
   <input type="text" name="searchbox" id="inputId"><br>
   <button id="go" onclick="search();">Go</button>
+  <button id="go2" onclick="search2();">Go2</button>
+
 </p>
 <p id="demo">
 
@@ -115,6 +158,7 @@ p.sansserif {
   font: normal 12px "Trebuchet MS", Helvetica, sans-serif;
 }
 
+
 .res-table thead th {
   background-color: #DDEFEF;
   border: solid 1px #DDEEEE;
@@ -130,4 +174,30 @@ p.sansserif {
   padding: 10px;
   text-shadow: 1px 1px 1px #fff;
 }
+
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+
 </style>
