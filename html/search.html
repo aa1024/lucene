@@ -21,21 +21,7 @@
 
   }
 
-	function processTable(res){
-		var txt="";
-        if (null !== res) {
-		        txt += "<br><table class='res-table' > <thead><tr><th>Key</th><th>Index</th><th>Table</th> </tr></thead>";
-		        for (x in res) {
-		        	txt += "<tr>";
-		            txt += "<td>" + res[x].iKey + "</td>";
-					txt += "<td>" + res[x].iVal + "</td>";
-					txt += "<td>" + res[x].iTab + "</td>";
-					txt += "</tr>";
-		        }
-		        txt += "</table>"  ;      
-        }
-        return txt;
-	}
+	
 
 function processTable2(res){
 		var txt="";
@@ -54,41 +40,6 @@ function processTable2(res){
 						txt += '</tr>';
 					}
 					txt += '</table>';
-				} else {  
-				txt = "";
-				for (var x in res) {
-					txt += x + " | " + res[x] + "<br />";
-				}
-			}
-		} else {
-			txt = d;
-		};
-		return txt + "<br />";
-	}
-
-    //parsing logic taken from kx websocket paper
-	function processTable22(res1){
-		var txt="";
-		if (typeof res1== "object") { 
-			if (res1.length) {  
-				console.log(res1);
-				var res=res1[1];
-  				txt = '<br><button class="collapsible">'+ res1[0]+'</button>';
-
-
-				txt += "<div class='content'><table class='res-table' > <thead><tr>"
-					for (var h in res[0]) {
-						txt += '<th>' + h + '</th>';
-					}
-					txt += '</tr></thead>';
-					for (var i = 0; i < res.length; i++) {
-						txt += '<tr>';
-						for (var x in res[0]) {	
-							txt += '<td>' + res[i][x] + '</td>';
-						}
-						txt += '</tr>';
-					}
-					txt += '</table></div>';
 				} else {  
 				txt = "";
 				for (var x in res) {
