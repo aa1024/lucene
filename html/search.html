@@ -21,13 +21,12 @@
 
   }
 
-	
 
 function processTable2(res){
 		var txt="";
 		if (typeof res== "object") { 
 			if (res.length) {  
-				txt = "<br><table class='res-table' > <thead><tr>"
+				txt = "<br><table class='res-table'><thead><tr>"
 					for (var h in res[0]) {
 						txt += '<th>' + h + '</th>';
 					}
@@ -68,11 +67,6 @@ function processTable2(res){
 				res.forEach ( function(r){ tabTxt += processTable2(r)});
 				document.getElementById("demo").innerHTML = tabTxt;
             }
-
-
-         
-
-
             connWS.onerror = function(obj) { console.log(obj.data); }
         } else alert("WebSockets not supported in this Browser");
     }
